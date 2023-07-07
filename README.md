@@ -103,3 +103,8 @@ return teammate
 
 	match (lebron {name: "LeBron James"})
 	remove lebron.age return lebron
+30. create spatial index
+	CALL spatial.addPointLayer("myLayer", "location")
+	MATCH (n)
+	WHERE distance(point({latitude: {lat}, longitude: {lon}}), n.location) < 10000
+	RETURN n
